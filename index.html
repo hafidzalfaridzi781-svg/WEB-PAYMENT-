@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment by Kaizye Official</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .header p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .payment-method {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: left;
+        }
+
+        .payment-method h2 {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .payment-detail {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .payment-detail:last-child {
+            border-bottom: none;
+        }
+
+        .payment-info {
+            flex-grow: 1;
+        }
+
+        .payment-info h3 {
+            color: #444;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .payment-info p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .copy-btn {
+            background-color: #4a6cf7;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background-color: #3a5ce5;
+            transform: translateY(-2px);
+        }
+
+        .qris-section {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .qris-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .qris-image {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .btn {
+            padding: 15px;
+            border-radius: 12px;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background-color: #4a6cf7;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #3a5ce5;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(58, 92, 229, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: #f8f9fa;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e9ecef;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            color: #212529;
+        }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(255, 193, 7, 0.4);
+        }
+
+        .notification {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .notification h3 {
+            color: #856404;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .notification p {
+            color: #856404;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .icon {
+            font-size: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .payment-detail {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .copy-btn {
+                margin-top: 10px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>PAYMENT BY KAIZYE OFFICIAL</h1>
+            <p>Pilih metode pembayaran yang tersedia</p>
+        </div>
+        
+        <div class="payment-method">
+            <h2>Transfer Bank / E-Wallet</h2>
+            
+            <div class="payment-detail">
+                <div class="payment-info">
+                    <h3>DANA</h3>
+                    <p>088229286129</p>
+                </div>
+                <button class="copy-btn" onclick="copyToClipboard('088229286129')">Salin</button>
+            </div>
+            
+            <div class="payment-detail">
+                <div class="payment-info">
+                    <h3>N/A</h3>
+                    <p>RXXX XXX</p>
+                </div>
+                <button class="copy-btn" onclick="copyToClipboard('RXXX XXX')">Salin</button>
+            </div>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="btn btn-primary" onclick="toggleQRIS()">
+                <span class="icon">📱</span> Tampilkan QRIS
+            </button>
+            
+            <button class="btn btn-secondary" onclick="window.open('https://t.me/informasikaizye', '_blank')">
+                <span class="icon">📢</span> Saluran Informasi
+            </button>
+            
+            <button class="btn btn-warning" onclick="window.open('t.me/KAIZYE_STORE', '_blank')">
+                <span class="icon">✉️</span> Kirim Pesan ke Kaizye
+            </button>
+        </div>
+        
+        <div class="qris-section" id="qrisSection">
+            <img src="https://files.catbox.moe/iwygx9.jpg" alt="QRIS Payment" class="qris-image">
+            <p>Scan QR Code di atas untuk melakukan pembayaran</p>
+        </div>
+        
+        <div class="notification">
+            <h3>Penting!</h3>
+            <p>Jika sudah transfer, langsung hubungi @KAIZYE_STORE dan kirim bukti pembayaran.</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleQRIS() {
+            const qrisSection = document.getElementById('qrisSection');
+            qrisSection.classList.toggle('active');
+        }
+        
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Teks berhasil disalin: ' + text);
+            }).catch(err => {
+                console.error('Gagal menyalin teks: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
